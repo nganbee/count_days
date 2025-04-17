@@ -8,121 +8,89 @@
         body {
             margin: 0;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(to right, #e0eafc, #cfdef3);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-    
-        .container {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-            transition: all 0.3s ease-in-out;
-        }
-    
-        h1 {
-            margin-bottom: 30px;
-            color: #2e3a59;
-            font-size: 28px;
-            letter-spacing: 1px;
-        }
-    
-        .boxes {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: nowrap;
-        }
-    
-        .box {
-            background: #ffffffb0;
-            border: 1px solid #d1e8e2;
-            color: #2e3a59;
-            padding: 20px;
-            border-radius: 15px;
-            font-size: 32px;
-            font-weight: 600;
+            background: #f3f6fa;
+            font-family: 'Segoe UI', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            justify-content: center;
+            padding: 20px;
         }
     
-        .box:hover {
+        .countdown-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    
+        .countdown-box {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 30px 20px;
+            width: 120px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .countdown-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
         }
     
-        .label {
-            font-size: 13px;
-            font-weight: 500;
-            margin-top: 10px;
+        .countdown-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1c1c1c;
+        }
+    
+        .countdown-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #6a7b89;
         }
     
-        #total-days {
+        .total-days-text {
             margin-top: 30px;
             font-size: 18px;
-            color: #445;
+            color: #333;
         }
     
-        /* Mobile styles */
         @media (max-width: 600px) {
-            .boxes {
-                flex-direction: column;
-                align-items: center;
+            .countdown-box {
+                width: 100px;
+                padding: 20px;
             }
     
-            .box {
-                width: 80%;
-                font-size: 26px;
-            }
-    
-            h1 {
-                font-size: 22px;
-            }
-    
-            #total-days {
-                font-size: 16px;
+            .countdown-number {
+                font-size: 28px;
             }
         }
     </style>
     
+    
 </head>
 <body>
 
-    <div class="container">
-        <h1></h1>
-        <div class="boxes">
-            <div class="box">
-                <div id="years">0</div>
-                <div class="label">Years</div>
-            </div>
-            <div class="box">
-                <div id="months">0</div>
-                <div class="label">Months</div>
-            </div>
-            <div class="box">
-                <div id="days">0</div>
-                <div class="label">Days</div>
-            </div>
+    <div class="countdown-container">
+        <div class="countdown-box">
+            <div class="countdown-number" id="years">0</div>
+            <div class="countdown-label">Years</div>
         </div>
-        <div id="total-days"></div>
+        <div class="countdown-box">
+            <div class="countdown-number" id="months">0</div>
+            <div class="countdown-label">Months</div>
+        </div>
+        <div class="countdown-box">
+            <div class="countdown-number" id="days">0</div>
+            <div class="countdown-label">Days</div>
+        </div>
     </div>
+    
+    <div class="total-days-text" id="total-days"></div>    
 
     <script>
         function calculateDuration(fromDate) {
