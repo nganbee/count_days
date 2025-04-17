@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAYS</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .boxes {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .box {
+            background-color: #c0dfb9;
+            color: rgb(0, 0, 0);
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-size: 36px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+        }
+
+        .label {
+            font-size: 14px;
+            font-weight: normal;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #total-days {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1></h1>
+        <div class="boxes">
+            <div class="box">
+                <div id="years">0</div>
+                <div class="label">Years</div>
+            </div>
+            <div class="box">
+                <div id="months">0</div>
+                <div class="label">Months</div>
+            </div>
+            <div class="box">
+                <div id="days">0</div>
+                <div class="label">Days</div>
+            </div>
+        </div>
+        <div id="total-days"></div>
+    </div>
+
+    <script>
+        function calculateDuration(fromDate) {
+            const now = new Date();
+
+            let years = now.getFullYear() - fromDate.getFullYear();
+            let months = now.getMonth() - fromDate.getMonth();
+            let days = now.getDate() - fromDate.getDate();
+
+            if (days < 0) {
+                months -= 1;
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+
+            if (months < 0) {
+                years -= 1;
+                months += 12;
+            }
+
+            const totalDays = Math.floor((now - fromDate) / (1000 * 60 * 60 * 24));
+
+            return { years, months, days, totalDays };
+        }
+
+        const targetDate = new Date("2025-01-11");
+        const duration = calculateDuration(targetDate);
+
+        document.getElementById("years").textContent = duration.years;
+        document.getElementById("months").textContent = duration.months;
+        document.getElementById("days").textContent = duration.days;
+        document.getElementById("total-days").textContent = `Days: ${duration.totalDays}`;
+    </script>
+
+</body>
+</html>
