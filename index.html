@@ -19,33 +19,34 @@
     
         .container {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             text-align: center;
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
         }
     
         h1 {
             margin-bottom: 30px;
             color: #333;
-            font-size: 24px;
+            font-size: 28px;
         }
     
         .boxes {
             display: flex;
+            flex-direction: row;
             justify-content: center;
             gap: 20px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
     
         .box {
             background-color: #c0dfb9;
             color: #000;
-            padding: 20px;
+            padding: 20px 30px;
             border-radius: 10px;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             display: flex;
             flex-direction: column;
@@ -54,7 +55,7 @@
         }
     
         .label {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: normal;
             margin-top: 10px;
             text-transform: uppercase;
@@ -63,11 +64,11 @@
     
         #total-days {
             margin-top: 30px;
-            font-size: 18px;
+            font-size: 20px;
             color: #555;
         }
     
-        /* 🔁 Media Query for small screens */
+        /* 📱 Mobile styles */
         @media (max-width: 600px) {
             .boxes {
                 flex-direction: column;
@@ -87,7 +88,8 @@
                 font-size: 16px;
             }
         }
-    </style>    
+    </style>
+      
 </head>
 <body>
 
