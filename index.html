@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>DAYS</title>
     <style>
         body {
@@ -61,23 +61,21 @@
         }
     
         @media (max-width: 600px) {
-            .countdown-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        
             .countdown-box {
-                width: 80%;
+                width: 100px; /* or 90px, depending on your padding */
             }
         
             .countdown-number {
                 font-size: 28px;
             }
-        }
         
+            .countdown-container {
+                flex-wrap: nowrap;
+                justify-content: center;
+                gap: 10px;
+            }
+        }        
     </style>
-    
-    
 </head>
 <body>
 
